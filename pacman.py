@@ -10,19 +10,19 @@ from pygame.event import Event
 pygame.init()
 
 # Константы
-WIDTH, HEIGHT = 600, 400   # Ширина и высота окна игры
-CELL_SIZE = 20   # Размер клетки
-ROWS, COLS = HEIGHT // CELL_SIZE, WIDTH // CELL_SIZE   # Количество строк и столбцов
-FPS = 10   # Частота кадров
-DIRECTIONS = (-1, 1)   # Возможные направления движения
+WIDTH, HEIGHT = 600, 400  # Ширина и высота окна игры
+CELL_SIZE = 20  # Размер клетки
+ROWS, COLS = HEIGHT // CELL_SIZE, WIDTH // CELL_SIZE  # Количество строк и столбцов
+FPS = 10  # Частота кадров
+DIRECTIONS = (-1, 1)  # Возможные направления движения
 
 # Цвета
-BLACK = 0, 0, 0
-YELLOW = 255, 255, 0
-BLUE = 0, 0, 255
-WHITE = 255, 255, 255
-GREEN = 0, 255, 0
-RED = 255, 0, 0
+BLACK = (0, 0, 0)
+YELLOW = (255, 255, 0)
+BLUE = (0, 0, 255)
+WHITE = (255, 255, 255)
+GREEN = (0, 255, 0)
+RED = (255, 0, 0)
 
 
 class MoveableObject:
@@ -50,7 +50,7 @@ class Pacman(MoveableObject):
 
     def __init__(self):
         super().__init__()
-        self.mouth_open = True   # Состояние рта (открыт/закрыт)
+        self.mouth_open = True  # Состояние рта (открыт/закрыт)
 
     def draw(self, screen: Surface):
         if self.mouth_open:
@@ -67,8 +67,9 @@ class Pacman(MoveableObject):
             (self.x * CELL_SIZE, self.y * CELL_SIZE, CELL_SIZE, CELL_SIZE),
             start_angle * (3.14 / 180),
             end_angle * (3.14 / 180),
-            CELL_SIZE // 2
+            CELL_SIZE // 2,
         )
+
 
 class Ghost(MoveableObject):
     """Призрак"""
@@ -91,7 +92,6 @@ class Ghost(MoveableObject):
         x = random.choice((0, *DIRECTIONS))
         y = random.choice(DIRECTIONS) if x == 0 else 0
         self.direction = x, y
-
 
     def draw(self, screen: Surface):
         pygame.draw.rect(
