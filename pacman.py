@@ -192,5 +192,6 @@ class Game:
 
 
 if __name__ == "__main__":
-    game = Game(4, 5)
+    # Запуск игры с 4 призраками и таймером 5 сеунд для смены напраления движения призраков
+    game = Game(count_ghosts=4, timer_update_move_sec=5)
     game.run()
